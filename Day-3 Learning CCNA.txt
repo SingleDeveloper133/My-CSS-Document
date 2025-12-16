@@ -1,0 +1,312 @@
+
+Day 3 - Part 1  .
+
+-------------------------------------------------------------
+
+What is a networking model ?
+
+Networking models categorize and provide a structure for networking protocols and standards .
+ 
+-------------------------------------------------------------
+
+What is Protocol  ? 
+
+A  set of rules defining how network devices and software should work.
+
+-------------------------------------------------------------
+
+OSI Model ( Open System Interconnection ) 
+
+Have 7 Layers (Starting at Layer 7)
+
+1. Physical 
+
+2. Data Link 
+
+3. Network
+
+4. Transport
+
+5. Session 
+
+6. Presentation
+
+7. Application 
+
+-------------------------------------------------------------
+
+Application Layer (7) :
+
+{
+   This layer is closest to the end user. 
+   
+   Interacts with software applications , for example your web browser
+
+   HTTP and HTTPS are Layer 7 protocols . (https://example.ir)
+
+}
+
+-------------------------------------------------------------
+
+Function of Layer 7 including :
+
+{
+    
+    Identifying communication partners.
+    
+    Synchronizing communication .
+
+
+}
+-------------------------------------------------------------
+
+Presentation Layer (6) :
+
+{
+    Data in the application layer in ' application format ' , a format that application understand . 
+    
+    It need to be ' Translated ' to a diffrent format to be sent over the network.
+
+    The Presentation layer's job is to translate between application and network formats.
+
+    For example , encryption of data as it is sent , and decryption of data as it is received
+
+    Also translates between different Application layer formats.
+
+    ( Copilot : Format is the way data is displayed or structured for a particular system. )
+}
+
+-------------------------------------------------------------
+
+Session Layer (5) :
+
+{
+    Controls dialogues (sessions) between communication hosts . 
+    
+    Establishes , Manages , and terminates connections between the local application ( For example your web browser ) and the remote application ( For example , Youtube ) .
+
+}
+
+-------------------------------------------------------------
+
+Transport Layer (4) :
+
+{
+    Segments and reassembles data for communication between end host .
+    
+    Breaks large pieces of data into smaller segments which can be more easily sent over the network and are less likely to cause transmission problems if errors occur  .
+     
+    Provide host-to-host communication.
+    
+}
+
+(
+
+Add Header in this layer , 
+
+
+TCP or UDP Header: Contains information such as port numbers for specific applications and 
+
+sequence numbers for reliable data delivery. The data at this layer is called segments. 
+
+)
+
+
+
+-------------------------------------------------------------
+
+
+ Network Layer (3) :
+
+{
+    Provides connectivity between end host on different network ( ie. outside of the LAN ) . 
+    
+    Provides logical addressing ( IP addresses ).
+ 
+    Provides path selection between source and destination.
+
+    Router operate at Layer 3
+
+    ( Routers are Layer 3 Devices. )
+   
+
+}
+
+-------------------------------------------------------------
+
+
+ Data Link Layer (2) :
+
+{
+    Provides node-to-node connectivity and data transfer ( For example , PC to switch , switch to router , router to router  ) . 
+    
+    Defines how data is formatted for transmission over a physical medium (for example , copper UTP cables).
+ 
+    Detects and ( possibly  ) corrects Physical Layer  Errors .
+
+    Router operate at Layer 3
+
+    ( Switches  are Layer 2 Devices. || Switches operate at Layer 2. )
+    
+    ( Swithch look atthedestination Layer 2 address to determine where to send the data . )
+   
+
+     [
+     [Header] --- [Payload] --- [Trailer] 
+
+    - Header: Contains source and destination MAC addresses
+    - Payload: Data to be transmitted
+    - Trailer: Contains FCS for error detection (For Just Layer 2 ) called Frame 
+
+
+   ]
+
+}
+
+-------------------------------------------------------------
+
+
+
+
+Some Word Definition :
+
+(
+
+Encapsulation : 
+
+    Encapsulation means wrapping data with extra information
+
+    before sending it across a network.  
+ 
+    Each layer of the OSI model adds its own header 
+    
+    to help deliver the data correctly
+
+    ( De-encapsulation = Opposite Encapsulation )
+
+-------------------------------------------------------------
+
+
+Network engineers  :
+
+don't usually work with the top 3 layers [Application,Presentation,Session] (OSI Model)
+
+-------------------------------------------------------------
+
+
+Application developers :
+
+work with the top layers of the OSI model to connect their application over networks .
+
+-------------------------------------------------------------
+
+
+host-to-host : 
+
+"host-to-host" refers to the direct communication between two computing devices, or 
+
+"hosts," typically a sender and a receiver, within a network, often using protocols like 
+
+TCP or UDP at the transport layer to ensure reliable and efficient end-to-end data delivery
+
+
+-------------------------------------------------------------
+
+
+What's inside the header of each OSI layer? / What does each layer's header contain?  :  
+
+Layer  |  Name  | Header Contents  
+
+7  |  Application  |  Application-specific data like file type, HTTP requests, cookies
+
+6  |  Presentation  |  Data format (e.g., JSON, XML), encryption, compression
+
+5  |  Session  |  Session ID, session control, connection management
+
+4  |  Transport  |  Source and destination port numbers, sequence numbers, error control (TCP/UDP)
+
+3  |  Network  |  Source and destination IP addresses, TTL, protocol type (e.g., ICMP, TCP)
+
+2  |  Data Link  |  Source and destination MAC addresses, error detection, framing
+
+1  |  Physical  |  Raw bits, electrical or optical signals, transmission rate
+
+
+-------------------------------------------------------------
+
+OSI Model Data Units Table : 
+
+Layer  |  Name  | Data Unit  | Description 
+
+7  |  Application  | Data | Raw information generated by the user or application (e.g., a message, file, or image  
+
+6  |  Presentation  | Data | Data that’s been encoded, compressed, or encrypted (e.g., converting text to UTF-8 or applying TLS encryption) 
+
+5  |  Session  | Data | Data managed within a session between two devices; handles start, maintenance, and end of communication
+
+4  |  Transport  | Segment (TCP) / Datagram (UDP)
+ | Data divided into segments with port numbers, sequence numbers, and error control for reliable delivery 
+
+3  |  Network  | Packet | Contains IP addresses and routing info to move data across networks
+
+2  |  Data Link  | Frame | Includes MAC addresses and error-checking codes (like FCS) for local network delivery
+
+1  |  Physical  | Bits | Binary digits (0s and 1s) transmitted as electrical, optical, or radio signals over physical media
+
+
+
+
+-------------------------------------------------------------
+
+Header :headers are pieces of control information added by each layer to data as it's encapsulated, 
+
+providing instructions for functions like addressing, routing, and error control
+
+-------------------------------------------------------------
+
+Trailer :  
+
+a trailer is a section added to the end of a data unit called a frame before it's 
+
+transmitted across a network
+
+-------------------------------------------------------------
+
+Protocol Data Units (PDU) :
+
+Data ( L.7-5 ) , Segment ( L.4 ) , Packet ( L.3 ) , Frame  ( L.2 )
+
+)
+
+
+
+ Physical Layer (1) :
+
+{
+    Defines physical characteristics of the medium used to transfer data between devices  . 
+    
+    For example , voltage levels , maximum  transmission distances , physical connectors , cable specifications etc.
+ 
+    Digital bits are converted into electrical ( for wired connections ) or radio ( For wireless connections signals  ) .
+   
+}
+
+-------------------------------------------------------------
+
+For Quickly Memories OSI Layer  ( All People Seem To Need Data Processing )
+
+
+-------------------------------------------------------------
+
+End Part 1 
+
+
+
+
+
+
+
+
+
+
+
